@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Urban Spice",
+    "cuisine": "Indian",
+    "cost": 20,
+    "rating": 4.5,
+    "menu": ["Butter Chicken", "Naan", "Paneer Tikka"],
+    "hours": "10 AM - 10 PM",
+    "image": "images/urban_spice.jpeg"
+  },
+  {
+    "name": "Bella Italia",
+    "cuisine": "Italian",
+    "cost": 30,
+    "rating": 4.2,
+    "menu": ["Pasta", "Pizza", "Risotto"],
+    "hours": "11 AM - 11 PM",
+    "image": "images/bella_italia.jpeg"
+  },
+  {
+    "name": "Tokyo Sushi",
+    "cuisine": "Japanese",
+    "cost": 35,
+    "rating": 4.7,
+    "menu": ["Sushi", "Ramen", "Tempura"],
+    "hours": "12 PM - 10 PM",
+    "image": "images/urban_spice.jpeg"
+  },
+  {
+    "name": "El Mexicano",
+    "cuisine": "Mexican",
+    "cost": 25,
+    "rating": 4.3,
+    "menu": ["Tacos", "Burritos", "Quesadilla"],
+    "hours": "9 AM - 9 PM",
+    "image": "images/bella_italia.jpeg"
+  },
+  {
+    "name": "Burger Hub",
+    "cuisine": "American",
+    "cost": 15,
+    "rating": 4.0,
+    "menu": ["Burgers", "Fries", "Cola"],
+    "hours": "10 AM - 11 PM",
+    "image": "images/urban_spice.jpeg"
+  },
+  {
+    "name": "Dragon Wok",
+    "cuisine": "Chinese",
+    "cost": 22,
+    "rating": 4.1,
+    "menu": ["Fried Rice", "Noodles", "Manchurian"],
+    "hours": "11 AM - 10 PM",
+    "image": "images/bella_italia.jpeg"
+  }
+]
