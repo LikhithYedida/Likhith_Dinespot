@@ -1,10 +1,23 @@
-const fs = require('fs');
-const path = require('path');
+const { MongoClient } = require('mongodb');
 
-function getRestaurants() {
-  const filePath = path.join(__dirname, 'public', 'data.json');
-  const jsonData = fs.readFileSync(filePath);
-  return JSON.parse(jsonData);
+const uri = 'mongodb+srv://dinespotuser:Dinespot%40123@dinespot.hgmcybo.mongodb.net/?retryWrites=true&w=majority&appName=dinespot';
+
+const client = new MongoClient(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+async function getRestaurants() {
+  try {
+    await client.connect();
+    const db = client.db('dinespotdb');
+    const collection = db.collection('restaurents');
+    const restaurants = await collection.find().toArray();
+    return restaurants;
+  } catch (error) {
+    console.error('MongoDB Fetch Error:', error);
+    return [];
+  }
 }
 
 module.exports = { getRestaurants };
