@@ -9,14 +9,18 @@ const client = new MongoClient(uri, {
 
 async function getRestaurants() {
   try {
+    // Connect to the database
     await client.connect();
     const db = client.db('dinespotdb');
     const collection = db.collection('restaurents');
+
     const restaurants = await collection.find().toArray();
     return restaurants;
   } catch (error) {
     console.error('MongoDB Fetch Error:', error);
     return [];
+  } finally {
+    await client.close();
   }
 }
 
