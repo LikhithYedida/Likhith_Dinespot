@@ -7,6 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 6150;
 
 app.use(cors({ origin: '*' }));
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
@@ -15,15 +16,15 @@ app.get('/', (req, res) => {
 
 app.get('/api', async (req, res) => {
   try {
-    const data = await getRestaurants();
+    const restaurants = await getRestaurants();
     res.setHeader('Content-Type', 'application/json');
-    res.send(data);
+    res.status(200).json(restaurants);
   } catch (err) {
-    console.error('Error sending response:', err);
-    res.status(500).send('Error retrieving data');
+    console.error('Error retrieving data:', err);
+    res.status(500).json({ error: 'Failed to fetch restaurant data' });
   }
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+  console.log(`✅ Server live at http://localhost:${PORT}`);
 });
