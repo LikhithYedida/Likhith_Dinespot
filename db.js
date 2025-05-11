@@ -1,26 +1,19 @@
 const { MongoClient } = require('mongodb');
 
-const uri = 'mongodb+srv://dinespotuser:Dinespot%40123@dinespot.hgmcybo.mongodb.net/?retryWrites=true&w=majority&appName=dinespot';
-
-const client = new MongoClient(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+const uri = process.env.MONGODB_URI; // Secure from Render's Environment tab
+const client = new MongoClient(uri);
+const dbName = 'dinespotdb';
 
 async function getRestaurants() {
   try {
-    // Connect to the database
     await client.connect();
-    const db = client.db('dinespotdb');
+    const db = client.db(dbName);
     const collection = db.collection('restaurents');
-
-    const restaurants = await collection.find().toArray();
+    const restaurants = await collection.find({}).toArray();
     return restaurants;
-  } catch (error) {
-    console.error('MongoDB Fetch Error:', error);
+  } catch (err) {
+    console.error('DB Error:', err);
     return [];
-  } finally {
-    await client.close();
   }
 }
 
