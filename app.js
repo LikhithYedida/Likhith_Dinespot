@@ -1,3 +1,4 @@
+require('dotenv').config(); 
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
@@ -19,11 +20,11 @@ app.get('/api', async (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(restaurants);
   } catch (err) {
-    console.error('❌ Error retrieving data:', err);
+    console.error('Error retrieving data:', err);
     res.status(500).json({ error: 'Failed to fetch restaurant data' });
   }
 });
 
 app.listen(PORT, () => {
-  console.log(`✅ Server running at http://localhost:${PORT}`);
+  console.log(`✅ Server live at http://localhost:${PORT}`);
 });
