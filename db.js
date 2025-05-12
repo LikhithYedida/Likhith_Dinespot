@@ -1,5 +1,5 @@
 const { MongoClient } = require('mongodb');
-const uri = process.env.MONGODB_URI;
+const uri = process.env.MONGODB_URI;  // make sure this matches your Render env var key
 const client = new MongoClient(uri);
 const dbName = 'dinespotdb';
 
@@ -7,7 +7,7 @@ async function getRestaurants() {
   try {
     await client.connect();
     const db = client.db(dbName);
-    const collection= db.collection('restaurants')
+    const collection = db.collection('restaurants');
     const restaurants = await collection.find({}).toArray();
     return restaurants;
   } catch (err) {

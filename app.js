@@ -25,5 +25,5 @@ app.get('/api', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`✅ Server live at http://localhost:${PORT}`);
+  console.log(`Server live at http://localhost:${PORT}`);
 });
