@@ -5,17 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Likhith Yedida | Portfolio</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       background-color: #f3f3f3;
+      color: #333;
     }
 
     header {
       background-color: #002244;
       color: white;
-      padding: 15px 20px;
+      padding: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -62,28 +67,39 @@
       border-top: 1px solid #ccc;
     }
 
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
     section {
-      padding: 40px 20px;
+      margin-bottom: 50px;
     }
 
     h2 {
-      color: #222;
+      color: #002244;
       border-bottom: 2px solid #ccc;
       padding-bottom: 5px;
     }
 
-    .skills, .education, .projects, .contact {
-      background-color: #fff;
-      border-radius: 8px;
-      padding: 20px;
-      margin-top: 20px;
-    }
-
-    .skills ul, .projects ul {
+    ul {
       padding-left: 20px;
     }
 
-    /* Responsive */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
     @media (max-width: 768px) {
       nav ul {
         display: none;
@@ -93,16 +109,13 @@
         display: flex;
       }
 
-      .mobile-nav {
-        display: none;
-      }
-
       .mobile-nav.show {
         display: block;
       }
     }
   </style>
 </head>
+
 <body>
 
   <header>
@@ -116,6 +129,7 @@
         <li><a href="#skills">Skills</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#certifications">Certifications</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -126,44 +140,79 @@
     <a href="#skills">Skills</a>
     <a href="#education">Education</a>
     <a href="#projects">Projects</a>
+    <a href="#certifications">Certifications</a>
     <a href="#contact">Contact</a>
   </div>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I’m a full stack developer with a strong foundation in Vue.js, Node.js, and MongoDB. Currently pursuing my Master’s in Computer Science at the University of New Haven, I love building scalable web applications and solving real-world problems through code.</p>
-  </section>
+  <div class="container">
+    <section id="about">
+      <h2>About Me</h2>
+      <p>I’m a full stack developer with expertise in Vue.js, Node.js, and MongoDB, currently pursuing my Master’s at the University of New Haven. I enjoy solving real-world problems through scalable and performant applications.</p>
+    </section>
 
-  <section id="skills" class="skills">
-    <h2>Skills</h2>
-    <ul>
-      <li><strong>Languages:</strong> JavaScript, Python, Java</li>
-      <li><strong>Frameworks:</strong> Vue.js, Node.js, Express.js</li>
-      <li><strong>Database:</strong> MongoDB, MySQL</li>
-      <li><strong>Tools:</strong> GitHub, Render, Netlify, AWS</li>
-    </ul>
-  </section>
+    <section id="skills" class="grid-3">
+      <div class="card">
+        <h2>Languages</h2>
+        <ul>
+          <li>JavaScript</li>
+          <li>Python</li>
+          <li>Java</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Frameworks</h2>
+        <ul>
+          <li>Vue.js</li>
+          <li>Node.js</li>
+          <li>Express.js</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Tools & DB</h2>
+        <ul>
+          <li>MongoDB, MySQL</li>
+          <li>GitHub, Render, Netlify, AWS</li>
+        </ul>
+      </div>
+    </section>
 
-  <section id="education" class="education">
-    <h2>Education</h2>
-    <p><strong>Master of Science in Computer Science</strong><br>University of New Haven, CT — May 2025</p>
-    <p><strong>B.Tech in Computer Science Engineering</strong><br>Koneru Lakshmaiah Educational Foundation — May 2023</p>
-  </section>
+    <section id="education">
+      <h2>Education</h2>
+      <p><strong>Master of Science in Computer Science</strong><br>University of New Haven, CT — May 2025</p>
+      <p><strong>B.Tech in Computer Science Engineering</strong><br>Koneru Lakshmaiah Educational Foundation — May 2023</p>
+    </section>
 
-  <section id="projects" class="projects">
-    <h2>Projects</h2>
-    <ul>
-      <li><strong>Dine Spot:</strong> Full-stack restaurant listing platform using Vue.js and Node.js</li>
-      <li><strong>Cab Decision System:</strong> AI-based system to optimize ride allocation</li>
-      <li><strong>Learning Management System:</strong> Web portal with Django for student/instructor use</li>
-    </ul>
-  </section>
+    <section id="projects" class="grid-3">
+      <div class="card">
+        <h2>Dine Spot</h2>
+        <p>Full-stack restaurant platform using Vue.js and Node.js.</p>
+      </div>
+      <div class="card">
+        <h2>Cab Decision System</h2>
+        <p>AI-based system optimizing cab allocations using OpenCV.</p>
+      </div>
+      <div class="card">
+        <h2>LMS Portal</h2>
+        <p>Learning Management System built with Django and MySQL.</p>
+      </div>
+    </section>
 
-  <section id="contact" class="contact">
-    <h2>Contact</h2>
-    <p>Email: likhith.yedida@example.com</p>
-    <p>Location: New Haven, CT</p>
-  </section>
+    <section id="certifications">
+      <h2>Certifications</h2>
+      <ul>
+        <li>AWS Developer Associate</li>
+        <li>Oracle Cloud Infrastructure 2021 Architect Associate</li>
+        <li>RPA Automation Anywhere</li>
+        <li>Cisco PCAP: Programming Essentials in Python</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: likhith.yedida@example.com</p>
+      <p>Location: New Haven, CT</p>
+    </section>
+  </div>
 
   <script>
     function toggleMobileMenu() {

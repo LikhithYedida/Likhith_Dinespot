@@ -1,20 +1,15 @@
 {
   "name": "likhithyedida_dinespot",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "server-api.js",
   "scripts": {
-    "start": "node --tls-min-v1.2 app.js",
-    "dev": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server-api.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
-    "cors": "^2.8.5",
     "dotenv": "^16.5.0",
-    "express": "^5.1.0",
-    "mongodb": "^6.16.0"
+    "mongodb": "^6.6.0"
   }
 }
