@@ -1,50 +1,51 @@
-// backend/serve-api.js
-const http = require("http");
-const fs = require("fs");
-const path = require("path");
+const http = require('http');
+const fs = require('fs');
+const path = require('path');
 
-const port = 6150;
-const publicDir = path.join(__dirname, "public");
+const PORT = 6150;
+
+const mimeTypes = {
+  '.html': 'text/html',
+  '.css': 'text/css',
+  '.js': 'application/javascript',
+  '.json': 'application/json',
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
+  '.png': 'image/png'
+};
 
 const server = http.createServer((req, res) => {
-  if (req.url === "/api") {
-    fs.readFile(path.join(__dirname, "data.json"), "utf8", (err, data) => {
+  if (req.url === '/api') {
+    const dataPath = path.join(__dirname, 'data.json');
+    fs.readFile(dataPath, (err, content) => {
+      res.setHeader('Access-Control-Allow-Origin', '*');
       if (err) {
         res.writeHead(500);
-        return res.end("Internal Server Error");
+        res.end('Failed to load data');
+      } else {
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(content);
       }
-      res.writeHead(200, { "Content-Type": "application/json" });
-      res.end(data);
     });
   } else {
-    let filePath = path.join(publicDir, req.url === "/" ? "index.html" : req.url);
-    let extname = String(path.extname(filePath)).toLowerCase();
-    let contentType = "text/html";
-
-    const mimeTypes = {
-      ".html": "text/html",
-      ".js": "application/javascript",
-      ".css": "text/css",
-      ".json": "application/json",
-      ".jpg": "image/jpeg",
-      ".jpeg": "image/jpeg",
-      ".png": "image/png",
-    };
-
-    contentType = mimeTypes[extname] || "application/octet-stream";
+    const filePath = req.url === '/' 
+      ? path.join(__dirname, 'public', 'index.html')
+      : path.join(__dirname, 'public', req.url);
+    const ext = path.extname(filePath);
+    const contentType = mimeTypes[ext] || 'application/octet-stream';
 
     fs.readFile(filePath, (err, content) => {
       if (err) {
         res.writeHead(404);
-        res.end("Not Found");
+        res.end('File Not Found');
       } else {
-        res.writeHead(200, { "Content-Type": contentType });
+        res.writeHead(200, { 'Content-Type': contentType });
         res.end(content);
       }
     });
   }
 });
 
-server.listen(port, () => {
-  console.log(`Backend running at http://localhost:${port}`);
+server.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
 });
